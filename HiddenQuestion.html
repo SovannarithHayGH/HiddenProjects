@@ -140,6 +140,25 @@
             font-size: 24px;
             cursor: pointer;
         }
+
+        /* Falling hearts */
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            animation: fall linear infinite;
+        }   
+        @keyframes fall {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100px) translateY(100vh);
+        opacity: 0;
+    }
+}
+        
     </style>
 </head>
 <body>
@@ -185,12 +204,39 @@
             // Hide the dummy GIF and show the real one
             document.getElementById('gif-containerdummy').style.display = 'none';  // Hide the dummy GIF
             document.getElementById('gif-container').style.display = 'block'; // Show the real GIF
+            startFallingHearts();
             
             // Hide the "Click Me" button and show the message and response buttons
             document.querySelector(".heart-button").style.display = "none";
             document.querySelector(".message").style.display = "block";
             document.querySelector(".response-buttons").style.display = "flex";
         }
+        
+        function startFallingHearts() {
+    const heartsContainer = document.getElementById('hearts-container');
+    const numberOfHearts = 10; // Number of hearts to fall every interval
+
+    // Loop to add hearts at intervals
+    setInterval(() => {
+        for (let i = 0; i < numberOfHearts; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '💖';
+            
+            // Randomize starting position
+            heart.style.left = `${Math.random() * window.innerWidth}px`; // Random X position
+            heart.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random fall time (between 2s and 5s)
+            
+            // Add the heart to the container
+            heartsContainer.appendChild(heart);
+            
+            // Remove the heart after animation is done (to clean up)
+            setTimeout(() => {
+                heart.remove();
+            }, parseFloat(heart.style.animationDuration) * 1000);
+        }
+    }, 800); // Creates 10 hearts every 200ms, adjust as needed
+}
 
         function submitYes() {
             fetch("https://formspree.io/f/xzzdgyzy", {
