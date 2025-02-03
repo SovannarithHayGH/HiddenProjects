@@ -169,7 +169,7 @@
             <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExanRxZmJ6bjJ2eWNwdzl6YWptNnpndHJuMXg3NWRnb2d6YnF3a2lrYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tMqK6aXiwushxQUeMz/giphy.gif" alt="Placeholder GIF" width="300">
         </div>
         
-        <p class="question">Can I ask you a question?</p>
+        <p class="question">Can anh ask em a question?</p>
 
         
         
@@ -225,7 +225,7 @@
             
             // Randomize starting position
             heart.style.left = `${Math.random() * window.innerWidth}px`; // Random X position
-            heart.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random fall time (between 2s and 5s)
+            heart.style.animationDuration = `${Math.random() * 16 + 6}s`; // Random fall time (between 2s and 5s)
             
             // Add the heart to the container
             heartsContainer.appendChild(heart);
@@ -235,7 +235,7 @@
                 heart.remove();
             }, parseFloat(heart.style.animationDuration) * 1000);
         }
-    }, 800); // Creates 10 hearts every 200ms, adjust as needed
+    }, 2000); // Creates 10 hearts every 200ms, adjust as needed
 }
 
         function submitYes() {
